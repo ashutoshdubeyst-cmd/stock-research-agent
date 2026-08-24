@@ -1,0 +1,114 @@
+stock-research-agent/
+│
+├── backend/
+│   ├── app/
+│   │   ├── main.py
+│   │   ├── config.py
+│   │   ├── dependencies.py
+│   │   │
+│   │   ├── api/
+│   │   │   ├── router.py
+│   │   │   └── routes/
+│   │   │       ├── health.py
+│   │   │       ├── stocks.py
+│   │   │       └── agent.py
+│   │   │
+│   │   ├── agents/
+│   │   │   ├── stock_agent.py
+│   │   │   ├── instructions.py
+│   │   │   ├── tool_schemas.py
+│   │   │   ├── tool_registry.py
+│   │   │   ├── tool_executor.py
+│   │   │   └── response_builder.py
+│   │   │
+│   │   ├── tools/
+│   │   │   ├── stock_snapshot.py
+│   │   │   ├── technical_indicators.py
+│   │   │   └── stock_comparison.py
+│   │   │
+│   │   ├── analytics/
+│   │   │   ├── moving_averages.py
+│   │   │   ├── rsi.py
+│   │   │   └── returns.py
+│   │   │
+│   │   ├── data_providers/
+│   │   │   ├── base.py
+│   │   │   ├── mock_provider.py
+│   │   │   └── provider_factory.py
+│   │   │
+│   │   ├── services/
+│   │   │   ├── stock_service.py
+│   │   │   └── analytics_service.py
+│   │   │
+│   │   ├── models/
+│   │   │   ├── agent.py
+│   │   │   ├── stock.py
+│   │   │   └── indicators.py
+│   │   │
+│   │   └── security/
+│   │       ├── input_validation.py
+│   │       └── rate_limit.py
+│   │
+│   ├── tests/
+│   │   ├── unit/
+│   │   │   ├── test_rsi.py
+│   │   │   ├── test_moving_averages.py
+│   │   │   └── test_tools.py
+│   │   ├── integration/
+│   │   │   └── test_agent_api.py
+│   │   ├── evals/
+│   │   │   ├── questions.json
+│   │   │   └── run_evals.py
+│   │   └── fixtures/
+│   │       ├── instruments.json
+│   │       └── price_history.json
+│   │
+│   ├── scripts/
+│   │   └── run_evaluations.py
+│   │
+│   ├── .env.example
+│   ├── requirements.txt
+│   ├── pyproject.toml
+│   └── Dockerfile
+│
+├── frontend/
+│   ├── app/
+│   │   ├── page.tsx
+│   │   ├── layout.tsx
+│   │   └── globals.css
+│   │
+│   ├── components/
+│   │   ├── agent/
+│   │   │   ├── ChatPanel.tsx
+│   │   │   ├── ChatInput.tsx
+│   │   │   ├── ChatMessage.tsx
+│   │   │   ├── ToolActivity.tsx
+│   │   │   ├── SourceList.tsx
+│   │   │   └── DataStatusBadge.tsx
+│   │   └── ui/
+│   │       ├── Button.tsx
+│   │       └── LoadingSpinner.tsx
+│   │
+│   ├── hooks/
+│   │   └── useAgentChat.ts
+│   │
+│   ├── lib/
+│   │   ├── api-client.ts
+│   │   └── formatters.ts
+│   │
+│   ├── types/
+│   │   └── agent.ts
+│   │
+│   ├── .env.local.example
+│   ├── package.json
+│   └── tsconfig.json
+│
+├── docs/
+│   ├── architecture.md
+│   ├── tool-contracts.md
+│   ├── data-sources.md
+│   └── evaluation-methodology.md
+│
+├── docker-compose.yml
+├── .gitignore
+└── README.md

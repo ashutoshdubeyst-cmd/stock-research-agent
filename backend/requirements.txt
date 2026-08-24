@@ -1,0 +1,43 @@
+# Web API
+fastapi>=0.116,<1.0
+uvicorn[standard]>=0.35,<1.0
+pydantic>=2.11,<3.0
+pydantic-settings>=2.10,<3.0
+python-multipart>=0.0.20,<1.0
+
+# HTTP and resilience
+httpx>=0.28,<1.0
+tenacity>=9.1,<10.0
+
+# AI model client
+openai>=1.100,<3.0
+groq>=0.30,<1.0
+huggingface-hub>=0.34,<2.0
+
+# Data analysis
+pandas>=2.3,<3.0
+numpy>=2.2,<3.0
+ta>=0.11,<1.0
+
+# Database and migrations
+sqlalchemy[asyncio]>=2.0,<3.0
+asyncpg>=0.30,<1.0
+alembic>=1.16,<2.0
+
+# Authentication and security
+pyjwt[crypto]>=2.10,<3.0
+
+# Scheduling and observability
+apscheduler>=3.11,<4.0
+structlog>=25.4,<26.0
+sentry-sdk[fastapi]>=2.35,<3.0
+
+# Local development and tests
+python-dotenv>=1.1,<2.0
+pytest>=8.4,<9.0
+pytest-asyncio>=1.1,<2.0
+pytest-cov>=6.2,<7.0
+respx>=0.22,<1.0
+ruff>=0.12,<1.0
+mypy>=1.17,<2.0
+uvicorn
