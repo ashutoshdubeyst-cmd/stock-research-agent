@@ -1,0 +1,62 @@
+{
+  "version": "1.0",
+  "generated_for": "tests",
+  "data_status": "mock",
+  "source": "mock_provider",
+  "instruments": [
+    {
+      "symbol": "TCS",
+      "name": "Tata Consultancy Services Limited",
+      "exchange": "NSE",
+      "currency": "INR",
+      "instrument_type": "equity",
+      "sector": "Information Technology",
+      "price": 3045.2,
+      "previous_close": 3055.9,
+      "volume": 2145300,
+      "market_cap_crore": 1101800,
+      "pe": 23.8,
+      "roe": 51.2,
+      "debt_to_equity": 0.09,
+      "revenue_growth": 5.6,
+      "profit_growth": 4.4,
+      "as_of": "2026-02-27T15:30:00+05:30"
+    },
+    {
+      "symbol": "INFY",
+      "name": "Infosys Limited",
+      "exchange": "NSE",
+      "currency": "INR",
+      "instrument_type": "equity",
+      "sector": "Information Technology",
+      "price": 1422.75,
+      "previous_close": 1411.18,
+      "volume": 5420100,
+      "market_cap_crore": 590400,
+      "pe": 21.7,
+      "roe": 29.4,
+      "debt_to_equity": 0.1,
+      "revenue_growth": 6.1,
+      "profit_growth": 7.2,
+      "as_of": "2026-02-27T15:30:00+05:30"
+    },
+    {
+      "symbol": "RELIANCE",
+      "name": "Reliance Industries Limited",
+      "exchange": "NSE",
+      "currency": "INR",
+      "instrument_type": "equity",
+      "sector": "Energy",
+      "price": 1428.4,
+      "previous_close": 1412.16,
+      "volume": 8310500,
+      "market_cap_crore": 1933200,
+      "pe": 24.6,
+      "roe": 9.2,
+      "debt_to_equity": 0.44,
+      "revenue_growth": 7.4,
+      "profit_growth": 3.8,
+      "as_of": "2026-02-27T15:30:00+05:30"
+    }
+  ]
+}
