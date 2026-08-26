@@ -1,4 +1,5 @@
 :root {
+  color-scheme: light;
   --ink: #17211b;
   --muted: #667069;
   --paper: #f4f1e9;
@@ -10,6 +11,21 @@
   --amber: #d69a3a;
   --red: #b84a3c;
   --shadow: 0 18px 55px rgba(26, 40, 31, 0.09);
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --ink: #eef3ef;
+  --muted: #a5b0a8;
+  --paper: #101612;
+  --surface: #18211b;
+  --line: #344139;
+  --green: #58c493;
+  --green-dark: #236b4c;
+  --green-soft: #203b2e;
+  --amber: #e0ac55;
+  --red: #ef8072;
+  --shadow: 0 20px 65px rgba(0, 0, 0, 0.34);
 }
 
 * { box-sizing: border-box; }
@@ -54,6 +70,12 @@ button { color: inherit; }
 .status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--amber); box-shadow: 0 0 0 3px rgba(214,154,58,.14); }
 .status-pill.online .status-dot { background: #2a9d67; box-shadow: 0 0 0 3px rgba(42,157,103,.14); }
 .avatar { border: 0; width: 34px; height: 34px; border-radius: 50%; color: #fff; background: var(--ink); font-size: 11px; font-weight: 700; cursor: pointer; }
+.theme-toggle { min-height: 34px; padding: 3px 8px 3px 4px; display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--line); border-radius: 99px; color: var(--muted); background: var(--surface); cursor: pointer; }
+.theme-toggle:hover { color: var(--ink); border-color: var(--green); }
+.theme-toggle:focus-visible { outline: 3px solid color-mix(in srgb, var(--green) 25%, transparent); outline-offset: 2px; }
+.theme-toggle__track { width: 30px; height: 26px; display: grid; place-items: center; }
+.theme-toggle__thumb { width: 24px; height: 24px; display: grid; place-items: center; border-radius: 50%; color: #fff; background: var(--green-dark); font-size: 12px; line-height: 1; transition: transform .2s ease, background .2s ease; }
+.theme-toggle__label { font-size: 10px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
 
 .workspace { width: min(1480px, 100%); margin: 0 auto; padding: 58px clamp(20px, 4vw, 68px) 28px; }
 .intro { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(260px, .8fr); align-items: end; gap: 50px; margin-bottom: 44px; }
@@ -146,6 +168,8 @@ footer p { margin: 0; font: italic 12px Georgia, serif; letter-spacing: 0; }
 @media (max-width: 620px) {
   .topbar { height: 62px; padding-inline: 16px; }
   .status-pill { display: none; }
+  .theme-toggle__label { display: none; }
+  .theme-toggle { padding-right: 4px; }
   .workspace { padding: 36px 14px 20px; }
   .intro { margin-bottom: 28px; }
   .intro h1 { font-size: 43px; }
@@ -226,3 +250,30 @@ footer p { margin: 0; font: italic 12px Georgia, serif; letter-spacing: 0; }
 .message__warnings { margin: 10px 0 0; padding: 9px 12px 9px 27px; border-left: 2px solid var(--amber); color: #76551e; background: #f6ecda; font-size: 10px; line-height: 1.5; }
 .message__footer { margin-top: 9px; padding: 0; display: flex; align-items: center; justify-content: flex-start; flex-wrap: wrap; gap: 8px; color: var(--muted); font-size: 8px; letter-spacing: 0; }
 .chat-form > small { display: flex; justify-content: space-between; gap: 8px; }
+
+/* Dark theme refinements for surfaces that intentionally use fixed light colors. */
+html[data-theme="dark"] body {
+  background:
+    radial-gradient(circle at 80% 8%, rgba(224, 172, 85, 0.08), transparent 24rem),
+    var(--paper);
+}
+html[data-theme="dark"] .topbar { background: rgba(16, 22, 18, 0.88); }
+html[data-theme="dark"] .market-panel,
+html[data-theme="dark"] .quick-prompts button,
+html[data-theme="dark"] .message p { background: #151d18; }
+html[data-theme="dark"] .stock-row:hover,
+html[data-theme="dark"] .stock-row.selected,
+html[data-theme="dark"] .chat-form { background: #1d2821; }
+html[data-theme="dark"] .stock-row.selected { border-color: #426050; box-shadow: 0 5px 18px rgba(0,0,0,.18); }
+html[data-theme="dark"] .search-box { background: #1c251f; }
+html[data-theme="dark"] .selected-summary { background: #123b2b; }
+html[data-theme="dark"] .message.user p { color: #fff; background: #236b4c; }
+html[data-theme="dark"] .chat-form textarea,
+html[data-theme="dark"] .search-box input { color: var(--ink); }
+html[data-theme="dark"] .source-list,
+html[data-theme="dark"] .tool-activity { background: rgba(10, 15, 12, .28); }
+html[data-theme="dark"] .data-status-badge { background: #28332c; }
+html[data-theme="dark"] .data-status-badge--delayed { color: #f1c779; background: #3d321e; }
+html[data-theme="dark"] .data-status-badge--unavailable { color: #f2a399; background: #432925; }
+html[data-theme="dark"] .message__warnings { color: #edc77e; background: #352c1c; }
+html[data-theme="dark"] .avatar { color: #152019; background: #dce7df; }

@@ -67,4 +67,3 @@ async def temporary_http_client(
         follow_redirects=True,
     ) as client:
         yield client
-

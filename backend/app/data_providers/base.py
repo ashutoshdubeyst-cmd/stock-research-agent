@@ -10,6 +10,22 @@ DataStatus = Literal["mock", "end_of_day", "delayed", "real_time"]
 PriceInterval = Literal["1d", "1w"]
 
 
+class MarketDataError(RuntimeError):
+    """Base exception for safe, provider-independent market-data failures."""
+
+
+class ProviderAuthenticationError(MarketDataError):
+    """Raised when provider credentials are missing, invalid, or expired."""
+
+
+class InstrumentNotFoundError(MarketDataError):
+    """Raised when a symbol cannot be mapped to a provider instrument."""
+
+
+class ProviderResponseError(MarketDataError):
+    """Raised when a provider returns an invalid or unsuccessful response."""
+
+
 def normalize_symbol(symbol: str) -> str:
     normalized = symbol.strip().upper()
     if not normalized or len(normalized) > 30:
@@ -59,6 +75,27 @@ class StockSnapshot(BaseModel):
     @property
     def change_percent(self) -> float:
         return round(self.change / self.previous_close * 100, 4)
+
+
+class Instrument(BaseModel):
+    """Provider-neutral identity used to resolve symbols to provider keys."""
+
+    model_config = ConfigDict(frozen=True)
+    symbol: str
+    name: str = Field(min_length=1)
+    exchange: str = Field(min_length=1)
+    instrument_key: str = Field(min_length=1)
+    instrument_type: str = Field(min_length=1)
+
+    @field_validator("symbol")
+    @classmethod
+    def validate_symbol(cls, value: str) -> str:
+        return normalize_symbol(value)
+
+    @field_validator("exchange")
+    @classmethod
+    def uppercase_exchange(cls, value: str) -> str:
+        return value.strip().upper()
 
 
 class PriceBar(BaseModel):

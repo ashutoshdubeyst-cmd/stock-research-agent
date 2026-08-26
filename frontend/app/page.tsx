@@ -2,6 +2,8 @@
 
 import { FormEvent, useCallback, useEffect, useMemo, useState } from "react";
 
+import ThemeToggle from "../components/ui/ThemeToggle";
+
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://127.0.0.1:8000";
 
 type Stock = {
@@ -158,6 +160,7 @@ export default function HomePage() {
           <a href="#methodology">Methodology</a>
         </nav>
         <div className="topbar-actions">
+          <ThemeToggle />
           <span className={`status-pill ${apiOnline ? "online" : ""}`}>
             <span className="status-dot" />
             {apiOnline === null ? "Checking" : apiOnline ? "API connected" : "Preview mode"}

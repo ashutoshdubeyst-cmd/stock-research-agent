@@ -17,9 +17,7 @@ class Settings(BaseSettings):
 
     # Application
     app_name: str = "Stock Research Agent API"
-    app_env: Literal["development", "testing", "staging", "production"] = (
-        "development"
-    )
+    app_env: Literal["development", "testing", "staging", "production"] = "development"
     app_debug: bool = False
     app_host: str = "0.0.0.0"
     app_port: int = Field(default=8000, ge=1, le=65535)
@@ -45,9 +43,7 @@ class Settings(BaseSettings):
 
     # Market data
     market_data_provider: Literal["mock", "upstox", "kite"] = "mock"
-    market_data_status: Literal[
-        "mock", "end_of_day", "delayed", "real_time"
-    ] = "mock"
+    market_data_status: Literal["mock", "end_of_day", "delayed", "real_time"] = "mock"
     market_exchange: str = "NSE"
     market_timezone: str = "Asia/Kolkata"
     market_default_interval: str = "1d"
@@ -56,9 +52,7 @@ class Settings(BaseSettings):
     upstox_api_key: SecretStr | None = None
     upstox_api_secret: SecretStr | None = None
     upstox_access_token: SecretStr | None = None
-    upstox_redirect_uri: str = (
-        "http://localhost:8000/api/v1/auth/upstox/callback"
-    )
+    upstox_redirect_uri: str = "http://localhost:8000/api/v1/auth/upstox/callback"
 
     kite_api_key: SecretStr | None = None
     kite_api_secret: SecretStr | None = None
@@ -73,9 +67,7 @@ class Settings(BaseSettings):
     database_echo: bool = False
 
     # Authentication and request boundaries
-    jwt_secret_key: SecretStr = SecretStr(
-        "replace_with_at_least_32_random_characters"
-    )
+    jwt_secret_key: SecretStr = SecretStr("replace_with_at_least_32_random_characters")
     jwt_algorithm: str = "HS256"
     access_token_expire_minutes: int = Field(default=30, ge=1)
     rate_limit_enabled: bool = True
@@ -102,7 +94,9 @@ class Settings(BaseSettings):
     def cors_origin_list(self) -> list[str]:
         """Return normalized origins from the comma-separated setting."""
 
-        return [origin.strip() for origin in self.cors_origins.split(",") if origin.strip()]
+        return [
+            origin.strip() for origin in self.cors_origins.split(",") if origin.strip()
+        ]
 
     def require_ai_api_key(self) -> str:
         """Return the active provider key or raise a configuration error."""
@@ -143,4 +137,3 @@ def get_settings() -> Settings:
     """Return a process-wide, cached settings instance."""
 
     return Settings()
-

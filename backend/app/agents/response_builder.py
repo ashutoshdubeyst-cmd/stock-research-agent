@@ -94,9 +94,9 @@ def build_agent_result(
     sources = collect_sources(records)
 
     if successful and sources:
-         confidence: Literal[
-            "verified", "document_based", "inferred", "unavailable"
-        ] = "verified"
+        confidence: Literal["verified", "document_based", "inferred", "unavailable"] = (
+            "verified"
+        )
     elif successful:
         confidence = "inferred"
     elif records:

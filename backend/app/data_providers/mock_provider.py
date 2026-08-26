@@ -5,6 +5,7 @@ from zoneinfo import ZoneInfo
 
 from app.data_providers.base import (
     DataStatus,
+    InstrumentNotFoundError,
     MarketDataProvider,
     PriceBar,
     PriceInterval,
@@ -73,7 +74,7 @@ class MockMarketDataProvider(MarketDataProvider):
             return normalized, MOCK_STOCKS[normalized]
         except KeyError as exc:
             supported = ", ".join(sorted(MOCK_STOCKS))
-            raise LookupError(
+            raise InstrumentNotFoundError(
                 f"No mock data for {normalized}. Supported: {supported}."
             ) from exc
 
